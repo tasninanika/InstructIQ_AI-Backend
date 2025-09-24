@@ -1,6 +1,6 @@
 from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
-import moviepy.editor as mp
+import moviepy as mp
 import os
 
 app = FastAPI()
