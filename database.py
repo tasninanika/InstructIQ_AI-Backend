@@ -12,6 +12,7 @@ uri = "mongodb+srv://{DB_USER}:{DB_PASS}@cluster0.4vcsd99.mongodb.net/?retryWrit
 
 # Create a new client and connect to the server
 client = MongoClient(uri, server_api=ServerApi('1'))
+db = client["instructiq_ai"]
 
 # Send a ping to confirm a successful connection
 try:
