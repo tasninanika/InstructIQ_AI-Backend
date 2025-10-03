@@ -12,13 +12,18 @@ def home():
 
 @app.post("/upload_video/")
 async def upload_video(file: UploadFile = File(...)):
-    # Save uploaded video temporarily
-    video_path = f"temp_{file.filename}"
+    # Ensure folders exist
+    os.makedirs("uploads/videos", exist_ok=True)
+    os.makedirs("uploads/audios", exist_ok=True)
+
+    # Save uploaded video
+    video_path = os.path.join("uploads/videos", f"temp_{file.filename}")
     with open(video_path, "wb") as f:
         f.write(await file.read())
 
-    # Extract audio from video
-    audio_path = f"{file.filename.split('.')[0]}.wav"
+    # Extract audio
+    audio_filename = f"{file.filename.split('.')[0]}.wav"
+    audio_path = os.path.join("uploads/audios", audio_filename)
     clip = mp.VideoFileClip(video_path)
     clip.audio.write_audiofile(audio_path)
 
