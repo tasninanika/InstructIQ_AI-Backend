@@ -2,8 +2,12 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import JSONResponse
 import moviepy as mp
 import os
+from routes import video_routes
 
 app = FastAPI()
+
+# Include router
+app.include_router(video_routes.router, prefix="/videos")
 
 @app.get("/")
 def home():
