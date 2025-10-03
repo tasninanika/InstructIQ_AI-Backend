@@ -10,3 +10,6 @@ router = APIRouter()
 # folders 
 os.makedirs("uploads/videos", exist_ok=True)
 os.makedirs("uploads/audios", exist_ok=True)
+
+# Load Whisper model
+model = whisper.load_model("small")
