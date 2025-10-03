@@ -14,6 +14,9 @@ uri = f"mongodb+srv://{DB_USER}:{DB_PASS}@cluster0.4vcsd99.mongodb.net/?retryWri
 client = MongoClient(uri, server_api=ServerApi('1'))
 db = client["instructiq_ai"]
 
+# Create collection objects
+videos_collection = db["videos"]
+
 # Send a ping to confirm a successful connection
 try:
     client.admin.command('ping')
